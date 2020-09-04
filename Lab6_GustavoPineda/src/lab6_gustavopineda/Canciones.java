@@ -5,6 +5,8 @@
  */
 package lab6_gustavopineda;
 
+import java.util.Date;
+
 /**
  *
  * @author Usuario
@@ -12,14 +14,14 @@ package lab6_gustavopineda;
 public class Canciones {
     private String titulo;
     private int puntuacion;
-    private String año;
+    private int año;
     private String artista;
     private String album;
 
     public Canciones() {
     }
 
-    public Canciones(String titulo, int puntuacion, String año, String artista, String album) {
+    public Canciones(String titulo, int puntuacion, int año, String artista, String album) {
         this.titulo = titulo;
         this.puntuacion = puntuacion;
         this.año = año;
@@ -43,11 +45,11 @@ public class Canciones {
         this.puntuacion = puntuacion;
     }
 
-    public String getAño() {
+    public int getAño() {
         return año;
     }
 
-    public void setAño(String año) {
+    public void setAño(int año) {
         this.año = año;
     }
 
@@ -69,7 +71,7 @@ public class Canciones {
 
     @Override
     public String toString() {
-        return titulo;
+        return "Titulo: "+titulo+"-"+"Artista: "+artista;
     }
     
     
