@@ -7,14 +7,13 @@ package lab6_gustavopineda;
 
 import java.awt.HeadlessException;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -55,6 +54,9 @@ public class Principal extends javax.swing.JFrame {
         tf_artista = new javax.swing.JTextField();
         tf_album = new javax.swing.JTextField();
         bt_agregarR = new javax.swing.JButton();
+        jd_modificar = new javax.swing.JDialog();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         bt_agregarC = new javax.swing.JButton();
         bt_modificarC = new javax.swing.JButton();
@@ -64,8 +66,6 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         ta_playlist = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        cb_playlists = new javax.swing.JComboBox<>();
         bt_agregarCP = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -152,6 +152,41 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
+        jt2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Titulo", "Puntuacion", "Año", "Artista", "Album"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jt2);
+
+        javax.swing.GroupLayout jd_modificarLayout = new javax.swing.GroupLayout(jd_modificar.getContentPane());
+        jd_modificar.getContentPane().setLayout(jd_modificarLayout);
+        jd_modificarLayout.setHorizontalGroup(
+            jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+        jd_modificarLayout.setVerticalGroup(
+            jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(142, 142, 142))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -166,6 +201,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         bt_modificarC.setText("Modificar Cancion");
+        bt_modificarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_modificarCActionPerformed(evt);
+            }
+        });
 
         bt_eliminarC.setText("Eliminar Cancion");
         bt_eliminarC.addActionListener(new java.awt.event.ActionListener() {
@@ -194,14 +234,6 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel9.setText("Playlist");
-
-        jLabel8.setText("Playlist:");
-
-        cb_playlists.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_playlistsActionPerformed(evt);
-            }
-        });
 
         bt_agregarCP.setText("Agregar cancion a playlist");
         bt_agregarCP.addActionListener(new java.awt.event.ActionListener() {
@@ -260,13 +292,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(95, 95, 95))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(bt_agregarCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(cb_playlists, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(77, 77, 77))
+                .addComponent(bt_agregarCP, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,13 +318,9 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(bt_agregarP))
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_playlists, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(bt_agregarCP)
-                .addGap(31, 31, 31))
+                .addGap(50, 50, 50))
         );
 
         pack();
@@ -311,7 +334,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_agregarCActionPerformed
 
     private void bt_eliminarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_eliminarCActionPerformed
-        
+
     }//GEN-LAST:event_bt_eliminarCActionPerformed
 
     private void bt_abrirAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_abrirAActionPerformed
@@ -322,22 +345,20 @@ public class Principal extends javax.swing.JFrame {
         try {
             JFileChooser jfc = new JFileChooser("./");
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
-            FileNameExtensionFilter filtro2 = new FileNameExtensionFilter("Imagenes", "jpg", "png", "bmp");
             jfc.setFileFilter(filtro);
-            jfc.addChoosableFileFilter(filtro2);            
             int seleccion = jfc.showOpenDialog(this);
-            if (seleccion == JFileChooser.APPROVE_OPTION){
-               fichero = jfc.getSelectedFile();
-               fr = new FileReader(fichero);
-               br=new BufferedReader(fr);
-               String linea;
-               ta_playlist.setText("");
-               while(  (linea=br.readLine()) !=null  ){                    
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                fichero = jfc.getSelectedFile();
+                fr = new FileReader(fichero);
+                br = new BufferedReader(fr);
+                String linea;
+                ta_playlist.setText("");
+                while ((linea = br.readLine()) != null) {
                     ta_playlist.append(linea);
                     ta_playlist.append("\n");
                 }
-            } //fin if
-            
+            }
+
         } catch (HeadlessException | IOException e) {
         }
         try {
@@ -347,25 +368,8 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_abrirAActionPerformed
 
-    private void cb_playlistsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_playlistsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_playlistsActionPerformed
-
-    private void bt_agregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarPActionPerformed
-        String playlist=JOptionPane.showInputDialog(null, "Ingrese el nombre de la nueva playlist");
-        DefaultComboBoxModel m = (DefaultComboBoxModel) cb_playlists.getModel();
-        m.addElement(playlist);
-        try {
-            Admin A = new Admin("./"+playlist+".txt");
-            A.cargarArchivo();
-            JOptionPane.showMessageDialog(null, "La playlist fue agregada exitosamente");
-            A.escribirArchivo();
-        } catch (IOException ex) {
-        }
-    }//GEN-LAST:event_bt_agregarPActionPerformed
-
     private void bt_agregarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarRActionPerformed
-        Canciones x = new Canciones(tf_titulo.getText(), (Integer)sp_puntuacion.getValue(), yc_año.getValue(), tf_artista.getText(),tf_album.getText());
+        Canciones x = new Canciones(tf_titulo.getText(), (Integer) sp_puntuacion.getValue(), yc_año.getValue(), tf_artista.getText(), tf_album.getText());
         lc.add(x);
         Object[] newrow = {x.getTitulo(), x.getPuntuacion(), x.getAño(), x.getArtista(), x.getAlbum()};
         DefaultTableModel m = (DefaultTableModel) jt1.getModel();
@@ -377,17 +381,69 @@ public class Principal extends javax.swing.JFrame {
         jd_agregar.setVisible(false);
     }//GEN-LAST:event_bt_agregarRActionPerformed
 
+    private void bt_modificarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_modificarCActionPerformed
+        jd_modificar.setModal(true);
+        jd_modificar.pack();
+        jd_modificar.setLocationRelativeTo(this);
+        jd_modificar.setVisible(true);
+    }//GEN-LAST:event_bt_modificarCActionPerformed
+
     private void bt_agregarCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarCPActionPerformed
-        try {
-            Admin B = new Admin("./Carros.txt");
-            B.cargarArchivo();
-            JOptionPane.showMessageDialog(null, "La cancion fue agregada exitosamente");
-            Canciones x = jl_canciones.getSelectedValue();
-            B.getAc().add(x);
-            B.escribirArchivo();
-        } catch (IOException ex) {
+        if (cb_playlists.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Primero agregue una playlist con el boton Agregar Playlist");
+        } else if (cb_playlists.getSelectedIndex() != -1) {
+            try {
+                String playlist1 = (String) cb_playlists.getSelectedItem();
+                Admin B = new Admin("./" + playlist1 + ".txt");
+                B.cargarArchivo();
+                int pos = jt1.getSelectedRow();
+                while (jt1.getSelectedRow() == -1) {
+                    JOptionPane.showMessageDialog(null, "Primero seleccione una fila de la tabla");
+                    pos = jt1.getSelectedRow();
+                }
+                Canciones x = lc.get(pos);
+                B.getAc().add(x);
+                B.escribirArchivo();
+                JOptionPane.showMessageDialog(null, "La cancion fue agregada exitosamente");
+            } catch (IOException ex) {
+            }
         }
     }//GEN-LAST:event_bt_agregarCPActionPerformed
+
+    private void bt_agregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarPActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
+        jfc.addChoosableFileFilter(filtro);
+        int seleccion = jfc.showSaveDialog(this);
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                @SuppressWarnings("UnusedAssignment")
+                File fichero = null;
+                if (jfc.getFileFilter().getDescription().equals("Archivos de Texto")) {
+                    fichero = new File(jfc.getSelectedFile().getPath() + ".txt");
+                } else {
+                    fichero = jfc.getSelectedFile();
+                }
+                fw = new FileWriter(fichero);
+                bw = new BufferedWriter(fw);
+                int pos=jt1.getSelectedRow();
+                Canciones y = lc.get(pos);
+                bw.write(y.getTitulo() + ";" + y.getPuntuacion() + ";" + y.getAño() + ";" + y.getArtista() + ";" + y.getAlbum() + ";");
+                bw.newLine();
+                bw.flush();
+                JOptionPane.showMessageDialog(this,
+                        "Cancion guardado exitosamente");
+            } catch (HeadlessException | IOException e) {
+            }
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+            }
+        }
+    }//GEN-LAST:event_bt_agregarPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,7 +465,7 @@ public class Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -426,7 +482,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_agregarR;
     private javax.swing.JButton bt_eliminarC;
     private javax.swing.JButton bt_modificarC;
-    private javax.swing.JComboBox<String> cb_playlists;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -435,12 +490,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JDialog jd_agregar;
+    private javax.swing.JDialog jd_modificar;
     private javax.swing.JTable jt1;
+    private javax.swing.JTable jt2;
     private javax.swing.JSpinner sp_puntuacion;
     private javax.swing.JTextArea ta_playlist;
     private javax.swing.JTextField tf_album;
@@ -448,5 +505,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_titulo;
     private com.toedter.calendar.JYearChooser yc_año;
     // End of variables declaration//GEN-END:variables
-    ArrayList<Canciones>lc= new ArrayList();
+    ArrayList<Canciones> lc = new ArrayList();
 }
