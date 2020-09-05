@@ -116,7 +116,7 @@
         <Component class="javax.swing.JSpinner" name="sp_puntuacion">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="5" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="3" maximum="10" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>

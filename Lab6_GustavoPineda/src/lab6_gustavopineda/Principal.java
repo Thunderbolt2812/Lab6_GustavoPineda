@@ -83,7 +83,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel7.setText("Album:");
 
-        sp_puntuacion.setModel(new javax.swing.SpinnerNumberModel(0, null, 5, 1));
+        sp_puntuacion.setModel(new javax.swing.SpinnerNumberModel(3, 1, 10, 1));
 
         bt_agregarR.setText("Agregar Rolon");
         bt_agregarR.addActionListener(new java.awt.event.ActionListener() {
@@ -386,7 +386,7 @@ public class Principal extends javax.swing.JFrame {
         tf_titulo.setText("");
         tf_artista.setText("");
         tf_album.setText("");
-        sp_puntuacion.setValue(0);
+        sp_puntuacion.setValue(1);
         jd_agregar.setVisible(false);
     }//GEN-LAST:event_bt_agregarRActionPerformed
 
