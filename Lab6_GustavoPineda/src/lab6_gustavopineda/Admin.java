@@ -54,7 +54,7 @@ public class Admin {
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
-            fw = new FileWriter(archivo, false);
+            fw = new FileWriter(archivo, true);
             bw = new BufferedWriter(fw);
             for (Canciones c : ac) {
                 bw.write(c.getTitulo() + "|");
@@ -65,7 +65,7 @@ public class Admin {
                 bw.newLine();
             }
             bw.flush();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
         }
         bw.close();
         fw.close();

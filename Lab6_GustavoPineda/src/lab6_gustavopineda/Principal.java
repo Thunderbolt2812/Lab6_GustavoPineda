@@ -13,7 +13,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -62,7 +61,6 @@ public class Principal extends javax.swing.JFrame {
         bt_modificarC = new javax.swing.JButton();
         bt_eliminarC = new javax.swing.JButton();
         bt_abrirA = new javax.swing.JButton();
-        bt_agregarP = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         ta_playlist = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
@@ -70,6 +68,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jt1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         jLabel2.setText("Titulo:");
 
@@ -221,13 +220,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        bt_agregarP.setText("Agregar Playlist");
-        bt_agregarP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_agregarPActionPerformed(evt);
-            }
-        });
-
         ta_playlist.setColumns(20);
         ta_playlist.setRows(5);
         jScrollPane2.setViewportView(ta_playlist);
@@ -235,7 +227,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel9.setText("Playlist");
 
-        bt_agregarCP.setText("Agregar cancion a playlist");
+        bt_agregarCP.setText("Agregar a....");
         bt_agregarCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_agregarCPActionPerformed(evt);
@@ -263,23 +255,17 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jt1);
 
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_modificarC)
-                    .addComponent(bt_agregarC, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_eliminarC, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_abrirA, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_agregarP, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
                 .addGap(210, 210, 210)
                 .addComponent(jLabel1)
@@ -291,9 +277,23 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(95, 95, 95))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bt_agregarCP, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_modificarC)
+                    .addComponent(bt_agregarC, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_eliminarC, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_abrirA, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_agregarCP, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,7 +304,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bt_agregarC)
@@ -313,14 +313,14 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(bt_eliminarC)
                         .addGap(18, 18, 18)
-                        .addComponent(bt_abrirA)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_agregarP))
-                    .addComponent(jScrollPane2)
+                        .addComponent(bt_abrirA))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(bt_agregarCP)
-                .addGap(50, 50, 50))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_agregarCP)
+                    .addComponent(jButton1))
+                .addGap(65, 65, 65))
         );
 
         pack();
@@ -334,7 +334,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_agregarCActionPerformed
 
     private void bt_eliminarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_eliminarCActionPerformed
-
+        
     }//GEN-LAST:event_bt_eliminarCActionPerformed
 
     private void bt_abrirAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_abrirAActionPerformed
@@ -369,8 +369,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_abrirAActionPerformed
 
     private void bt_agregarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarRActionPerformed
+        Admin G = new Admin("./predeterminada");
         Canciones x = new Canciones(tf_titulo.getText(), (Integer) sp_puntuacion.getValue(), yc_año.getValue(), tf_artista.getText(), tf_album.getText());
         lc.add(x);
+        G.getAc().add(x);
         Object[] newrow = {x.getTitulo(), x.getPuntuacion(), x.getAño(), x.getArtista(), x.getAlbum()};
         DefaultTableModel m = (DefaultTableModel) jt1.getModel();
         m.addRow(newrow);
@@ -389,61 +391,59 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_modificarCActionPerformed
 
     private void bt_agregarCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarCPActionPerformed
-        if (cb_playlists.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Primero agregue una playlist con el boton Agregar Playlist");
-        } else if (cb_playlists.getSelectedIndex() != -1) {
+        if (jt1.getSelectedRow() >= 0) {
+            JFileChooser jfc = new JFileChooser();
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
+            jfc.addChoosableFileFilter(filtro);
+            int seleccion = jfc.showSaveDialog(this);
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                try {
+                    @SuppressWarnings("UnusedAssignment")
+                    File fichero = null;
+                    if (jfc.getFileFilter().getDescription().equals("Archivos de Texto")) {
+                        fichero = new File(jfc.getSelectedFile().getPath() + ".txt");
+                    } else {
+                        fichero = jfc.getSelectedFile();
+                    }
+                    fw = new FileWriter(fichero);
+                    bw = new BufferedWriter(fw);
+                    int pos = jt1.getSelectedRow();
+                    Canciones y = lc.get(pos);
+                    bw.write(y.getTitulo() + ";" + y.getPuntuacion() + ";" + y.getAño() + ";" + y.getArtista() + ";" + y.getAlbum() + ";");
+                    bw.newLine();
+                    bw.flush();
+                    JOptionPane.showMessageDialog(this, "Cancion guardada exitosamente");
+                } catch (HeadlessException | IOException e) {
+                }
+                try {
+                    bw.close();
+                    fw.close();
+                } catch (IOException ex) {
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Primero seleccione un elemento de la tabla");
+        }
+
+    }//GEN-LAST:event_bt_agregarCPActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jt1.getSelectedRow() >= 0) {
             try {
-                String playlist1 = (String) cb_playlists.getSelectedItem();
-                Admin B = new Admin("./" + playlist1 + ".txt");
+                Admin B = new Admin("./predeterminada.txt");
                 B.cargarArchivo();
                 int pos = jt1.getSelectedRow();
-                while (jt1.getSelectedRow() == -1) {
-                    JOptionPane.showMessageDialog(null, "Primero seleccione una fila de la tabla");
-                    pos = jt1.getSelectedRow();
-                }
                 Canciones x = lc.get(pos);
                 B.getAc().add(x);
                 B.escribirArchivo();
-                JOptionPane.showMessageDialog(null, "La cancion fue agregada exitosamente");
             } catch (IOException ex) {
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Primero seleccione un elemento de la tabla");
         }
-    }//GEN-LAST:event_bt_agregarCPActionPerformed
-
-    private void bt_agregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarPActionPerformed
-        JFileChooser jfc = new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
-        jfc.addChoosableFileFilter(filtro);
-        int seleccion = jfc.showSaveDialog(this);
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-                @SuppressWarnings("UnusedAssignment")
-                File fichero = null;
-                if (jfc.getFileFilter().getDescription().equals("Archivos de Texto")) {
-                    fichero = new File(jfc.getSelectedFile().getPath() + ".txt");
-                } else {
-                    fichero = jfc.getSelectedFile();
-                }
-                fw = new FileWriter(fichero);
-                bw = new BufferedWriter(fw);
-                int pos=jt1.getSelectedRow();
-                Canciones y = lc.get(pos);
-                bw.write(y.getTitulo() + ";" + y.getPuntuacion() + ";" + y.getAño() + ";" + y.getArtista() + ";" + y.getAlbum() + ";");
-                bw.newLine();
-                bw.flush();
-                JOptionPane.showMessageDialog(this,
-                        "Cancion guardado exitosamente");
-            } catch (HeadlessException | IOException e) {
-            }
-            try {
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-            }
-        }
-    }//GEN-LAST:event_bt_agregarPActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -478,10 +478,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_abrirA;
     private javax.swing.JButton bt_agregarC;
     private javax.swing.JButton bt_agregarCP;
-    private javax.swing.JButton bt_agregarP;
     private javax.swing.JButton bt_agregarR;
     private javax.swing.JButton bt_eliminarC;
     private javax.swing.JButton bt_modificarC;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
