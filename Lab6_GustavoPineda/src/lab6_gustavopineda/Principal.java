@@ -49,10 +49,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         tf_titulo = new javax.swing.JTextField();
         sp_puntuacion = new javax.swing.JSpinner();
-        yc_año = new com.toedter.calendar.JYearChooser();
         tf_artista = new javax.swing.JTextField();
         tf_album = new javax.swing.JTextField();
         bt_agregarR = new javax.swing.JButton();
+        yc_año = new com.toedter.calendar.JYearChooser();
         jd_modificar = new javax.swing.JDialog();
         jScrollPane4 = new javax.swing.JScrollPane();
         jt2 = new javax.swing.JTable();
@@ -110,12 +110,13 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_titulo)
-                            .addComponent(sp_puntuacion)
-                            .addComponent(yc_año, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                            .addComponent(tf_artista)
-                            .addComponent(tf_album)))
+                        .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tf_titulo)
+                                .addComponent(sp_puntuacion, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                                .addComponent(tf_artista)
+                                .addComponent(tf_album))
+                            .addComponent(yc_año, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jd_agregarLayout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(bt_agregarR, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -134,8 +135,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(sp_puntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(yc_año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
@@ -189,7 +190,6 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Downloads\\music.png")); // NOI18N
         jLabel1.setText("PlayLists de Clau!");
 
         bt_agregarC.setText("Agregar Cancion");
@@ -269,7 +269,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(210, 210, 210)
                 .addComponent(jLabel1)
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(293, 293, 293)
                 .addComponent(jLabel9)
